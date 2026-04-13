@@ -1,43 +1,70 @@
 import csv
 import sys
 
-## DO NOT ALTER THIS FILE! This is just for your reference, this file will be replaced with real production code by the grader.
+"""
+NOTE: We will replace this file with our own production code when grading, but you should provide your own implementations here to make sure your tests are correct.
+
+We have provided an implementation of load_data().
+"""
 
 data = []
+FILENAME = "./Data/weather_data.csv"
 
 def load_data():
-    '''Arguments: None
-    Return value: None
-    Purpose: Loads the data from a file'''
+    """Loads in data from a CSV file and stores it in `data`"""
+    with open(FILENAME, newline='') as datafile:
+        csv_file = csv.reader(datafile)
+        for row in csv_file:
+            data.append(row)
+    
+
+def get_specified_column(column_heading: str) -> list[str]:
+    """Retrieves all of the data in the specified column. 
+
+    Args:
+        column_heading (str): The name of the column to retrieve
+
+    Returns:
+        list[str]: A list containing all of the data from the specified column. Returns an empty list if the column does not exist.
+    """
     pass
 
-def get_cell(row, column):
-    '''Arguments: row (int), column (int)
-    Return value: the value at that cell
-    Purpose: get the value at a specified cell
-    Raises: IndexError if row or column outside of bounds'''
+def get_data_for_date(date: str) -> list[str]:
+    """Returns the weather data associated with a given date
+
+    Args:
+        date (str): The date as a string (format: "yyyy-mm-dd")
+
+    Returns:
+        list[str]: A list of strings containing all of the weather data for that date
+    """   
     pass
 
-def get_row_by_title(title):
-    '''Arguments: title (string)
-    Return value: list of values of a row based on the title, 
-    i.e. the first cell in the row
-    (yes, a row, not a column as you would expect :) );
-    if row title isn't in table, returns empty list
-    Purpose: to get a row based on the first value in that row
-    '''
+def get_data_for_month(month: str) -> list[list]:
+    """Retrieves all of the data for the specified month
+
+    Args:
+        month (str): A numeric string representing a month
+
+    Returns:
+        list[list]: A list of lists containing all of the weather data for that month
+    """
+    pass
+
+def average_data_in_column(column_heading: str) -> float:
+    """Finds the average of the data in a given column
+
+    Args:
+        column_heading (str): The name of the column to retrieve
+
+    Returns:
+        float: The average of all of the values in that column
+    """
     pass
 
 def main():
-    '''Arguments: None
-    Return value: None
-    Purpose: Maintains command line interface, loads data. 
-    Usage statement: "Usage: python3 basic_cl.py row column". 
-    Prints cell value specified.
-    If invalid indices are given as command-line arguments, 
-    main prints the usage statement above.
-    '''
-    pass
+    load_data()
+    print(data)
 
 if __name__=='__main__':
     main()
